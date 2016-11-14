@@ -1,0 +1,19 @@
+{
+  "name": "format-data",
+  "version": "1.0.0",
+  "description": "",
+  "main": "formatData.js",
+  "dependencies": {
+    "async": "^2.1.2",
+    "csvtojson": "^1.0.3",
+    "lodash": "^4.16.6",
+    "nconf": "^0.8.4",
+    "pg": "^6.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
