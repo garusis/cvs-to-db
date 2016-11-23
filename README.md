@@ -14,7 +14,7 @@ Instructions
 
 **Example**
 
-	node formatData.js --host localhost --user userdb --password passdb --database test --table tabletest --file ./seeder.csv
+	node migrate.js --host localhost --user userdb --password passdb --database test --table tabletest --file ./seeder.csv
 
 
 **options:**
