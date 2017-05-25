@@ -6,6 +6,7 @@
   "dependencies": {
     "async": "^2.1.2",
     "csvtojson": "^1.0.3",
+    "knex": "^0.13.0",
     "lodash": "^4.16.6",
     "nconf": "^0.8.4",
     "pg": "^6.1.0"

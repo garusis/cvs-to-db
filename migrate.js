@@ -67,6 +67,7 @@ function treatObject(jsonObj) {
 }
 
 function sendTransaction(recordsInTransaction, cb) {
+    console.log(recordsInTransaction)
     knex
         .transaction(function (trx) {
             return knex(table)
