@@ -67,7 +67,6 @@ function treatObject(jsonObj) {
 }
 
 function sendTransaction(recordsInTransaction, cb) {
-    console.log(recordsInTransaction)
     knex
         .transaction(function (trx) {
             return knex(table)
@@ -92,6 +91,13 @@ function sendTransaction(recordsInTransaction, cb) {
 }
 
 converter.on("end_parsed", function (jsonArray) {
+    let startTime = Date.now();
+    console.log(`Starting to fill "${table}" table with ${jsonArray.length} records`);
+
+    let intervalId = setInterval(function () {
+        console.log('Remaining records: ', jsonArray.length);
+    }, 60000);
+
     async.timesLimit(Math.ceil(jsonArray.length / maxRecords), maxTransactions, function (index, cb) {
         let tempRecords = _.map(jsonArray.splice(0, maxRecords), treatObject);
         sendTransaction(tempRecords, cb);
@@ -101,13 +107,6 @@ converter.on("end_parsed", function (jsonArray) {
         clearInterval(intervalId);
         process.exit(0);
     });
-
-    let startTime = Date.now();
-    console.log(`Starting to fill "${table}" table with ${jsonArray.length} records`);
-
-    let intervalId = setInterval(function () {
-        console.log('Remaining records: ', jsonArray.length);
-    }, 60000);
 });
 
 //read from file
