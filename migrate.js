@@ -13,7 +13,7 @@ const defaults = {
     table: 'test',
     file: './test.csv',
     maxRecords: 20,
-    maxTransactions:10
+    maxTransactions: 10
 };
 
 nconf
@@ -34,7 +34,6 @@ const knex = require('knex')({
     },
     pool: {min: 2, max: 10}
 });
-
 
 
 let converter = new Converter({});
@@ -85,6 +84,7 @@ function sendTransaction(recordsInTransaction, cb) {
             }
 
             console.log('Records with ids ', JSON.stringify(_.map(recordsInTransaction, 'id')), ' couldn\'t be saved');
+            console.error(err.message);
             console.error(err.detail);
         })
         .finally(cb);
