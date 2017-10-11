@@ -13,7 +13,8 @@ const defaults = {
     table: 'test',
     file: './test.csv',
     maxRecords: 20,
-    maxTransactions: 10
+    maxTransactions: 10,
+    port: "5432"
 };
 
 nconf
@@ -29,6 +30,7 @@ const knex = require('knex')({
     connection: {
         host: envVars.host,
         user: envVars.user,
+        port: envVars.port,
         password: envVars.password,
         database: envVars.database
     },
